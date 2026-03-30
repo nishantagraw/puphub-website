@@ -56,10 +56,14 @@
 <div class="sp-size" onclick="selSize(this)">XL</div>
 </div>
 
-<button class="sp-add" onclick="addCart()">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-ADD TO CART — ₹1,499
+<div style="display:flex;gap:8px">
+<button class="sp-add" onclick="addCart()" style="flex:1;background:var(--brown)">
+🛒 ADD TO CART
 </button>
+<button class="sp-add" onclick="window.location='checkout.html'" style="flex:1;background:var(--gold)">
+⚡ BUY NOW — ₹1,499
+</button>
+</div>
 
 <div class="sp-features">
 <div class="sp-feat"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>No-Pull</div>
@@ -68,19 +72,21 @@ ADD TO CART — ₹1,499
 <div class="sp-feat"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Free Ship</div>
 </div>
 
-<!-- Size Guide inline -->
+<!-- Size Guide side by side -->
 <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
 <div class="sp-label">Size Guide</div>
-<img src="images/sizing-chart.png" alt="Sizing chart" style="width:100%;border-radius:10px;margin-bottom:10px">
-<table class="size-table" style="font-size:.75rem">
+<div style="display:flex;gap:14px;align-items:flex-start">
+<img src="images/sizing-chart.png" alt="Sizing chart" style="width:45%;border-radius:10px;flex-shrink:0">
+<table class="size-table" style="font-size:.7rem;flex:1">
 <thead><tr><th>Size</th><th>Neck</th><th>Chest</th><th>Weight</th></tr></thead>
 <tbody>
-<tr><td>S</td><td>15-17 / 38-43</td><td>18-24 / 46-61</td><td>5-10 lbs / 5-9 kg</td></tr>
-<tr><td>M</td><td>16-19 / 40-48</td><td>23-31 / 58-79</td><td>20-45 lbs / 9-20 kg</td></tr>
-<tr><td>L</td><td>18-23 / 45-58</td><td>28-36 / 71-91</td><td>40-80 lbs / 18-36 kg</td></tr>
-<tr><td>XL</td><td>21-37 / 53-88</td><td>28-44 / 81-112</td><td>80-110 lbs / 36-50 kg</td></tr>
+<tr><td>S</td><td>15-17 / 38-43</td><td>18-24 / 46-61</td><td>5-10 lbs</td></tr>
+<tr><td>M</td><td>16-19 / 40-48</td><td>23-31 / 58-79</td><td>20-45 lbs</td></tr>
+<tr><td>L</td><td>18-23 / 45-58</td><td>28-36 / 71-91</td><td>40-80 lbs</td></tr>
+<tr><td>XL</td><td>21-37 / 53-88</td><td>28-44 / 81-112</td><td>80-110 lbs</td></tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
