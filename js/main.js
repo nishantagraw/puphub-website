@@ -18,4 +18,30 @@ function toast(m){const c=document.getElementById('toastBox');if(!c)return;const
 window.toast=toast;
 // Add pawBurst keyframe dynamically
 const s=document.createElement('style');s.textContent='@keyframes pawBurst{0%{opacity:1;transform:scale(0)}50%{opacity:1;transform:scale(1.4) translateY(-20px)}100%{opacity:0;transform:scale(2) translateY(-50px) rotate(30deg)}}';document.head.appendChild(s);
+
+// SIZE POPUP
+let szAction='',szColorName='',szSize='M';
+window.openSz=function(action,color){
+  szAction=action;szColorName=color;szSize='M';
+  const ov=document.getElementById('szOverlay');if(!ov)return;
+  document.getElementById('szColor').textContent=color;
+  const btn=document.getElementById('szBtn');
+  if(action==='buy'){btn.textContent='BUY NOW — ₹1,499';btn.style.background='var(--gold)'}
+  else{btn.textContent='ADD TO CART';btn.style.background='var(--brown)'}
+  ov.querySelectorAll('.sp-size').forEach(s=>{s.classList.remove('active');if(s.textContent==='M')s.classList.add('active')});
+  ov.classList.add('show');document.body.style.overflow='hidden';
+};
+window.pickSz=function(el){
+  el.parentElement.querySelectorAll('.sp-size').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');szSize=el.textContent;
+};
+window.confirmSz=function(){
+  closeSz();
+  if(szAction==='buy'){window.location='checkout.html?color='+encodeURIComponent(szColorName)+'&size='+szSize}
+  else{toast(szColorName+' ('+szSize+') added to cart!')}
+};
+window.closeSz=function(){
+  const ov=document.getElementById('szOverlay');if(ov)ov.classList.remove('show');
+  document.body.style.overflow='';
+};
 })();
