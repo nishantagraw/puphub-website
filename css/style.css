@@ -64,7 +64,7 @@ nav.mn a:hover,nav.mn a.active{color:var(--gold);border-bottom-color:var(--gold)
 .cat-sec{background:#fff;padding:16px 0 14px;position:relative;z-index:2;overflow:visible;margin-top:-3px}
 .cat-hd{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:var(--brown);margin-bottom:6px}
 .cat-ln{width:36px;height:3px;background:var(--gold);border-radius:3px;margin-bottom:26px}
-.cat-g{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.cat-g{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
 .cat-c{text-align:center;padding:20px 8px;border-radius:var(--r-md);background:var(--gold);cursor:pointer;transition:all var(--ease)}
 .cat-c:hover{transform:translateY(-5px) scale(1.03);box-shadow:var(--s-gold)}
 .cat-c svg{width:34px;height:34px;fill:var(--white);margin:0 auto 8px}
@@ -210,7 +210,7 @@ nav.mn a:hover,nav.mn a.active{color:var(--gold);border-bottom-color:var(--gold)
 /* RESPONSIVE */
 @media(max-width:1024px){.hero-dog{width:48%;right:0;top:2%}.hero-left{max-width:400px}.prod-g{grid-template-columns:repeat(2,1fr)}.info-g{flex-direction:column !important}.sec-img{width:100%;max-width:400px;margin:0 auto 30px}.feat-g{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){html{font-size:100%}section{padding:55px 0}nav.mn,.si-btn,.rg-btn{display:none}.mob-t{display:block}.hero{min-height:auto;padding-bottom:40px}.hero-dog{position:relative;right:auto;top:auto;width:75%;max-width:300px;margin:10px auto -30px}.hero-wrap{flex-direction:column;text-align:center}.hero-left{max-width:100%;padding:40px 0 20px}.hero-sub{margin:0 auto 24px}.cat-g{grid-template-columns:repeat(3,1fr)}.rev-g{grid-template-columns:1fr}.ft-g{grid-template-columns:1fr}.ft-bot{flex-direction:column;gap:8px;text-align:center}.cta-form{flex-direction:column;border-radius:var(--r-lg)}.cta-form button{width:100%;border-radius:var(--r-full)}}
-@media(max-width:480px){.cat-g{grid-template-columns:repeat(2,1fr)}.prod-g{grid-template-columns:1fr}.feat-g{grid-template-columns:1fr}}
+@media(max-width:480px){.cat-g{grid-template-columns:repeat(3,1fr)}.prod-g{grid-template-columns:1fr}.feat-g{grid-template-columns:1fr}}
 
 /* === INNER PAGES === */
 .page-hero{background:var(--hero-bg);padding:64px 0 4px;text-align:center}
