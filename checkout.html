@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Checkout — PupHub</title>
+<meta name="description" content="Complete your PupHub order. Secure checkout via Razorpay.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.ck-wrap{display:flex;gap:30px;align-items:flex-start}
+.ck-form{flex:1}
+.ck-order{width:320px;flex-shrink:0;background:var(--cream2);border-radius:var(--r-lg);padding:20px;position:sticky;top:80px}
+.ck-form h2{font-size:1.1rem;margin-bottom:12px}
+.ck-form h3{font-size:.88rem;margin:18px 0 8px;color:var(--brown)}
+.fg{margin-bottom:10px}
+.fg label{display:block;font-size:.72rem;font-weight:600;color:var(--brown);margin-bottom:3px;font-family:var(--fp)}
+.fg input,.fg select,.fg textarea{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;font-family:var(--fb);color:var(--text);transition:border .2s;background:#fff}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--gold)}
+.fg textarea{resize:vertical;min-height:60px}
+.fg-row{display:flex;gap:10px}
+.fg-row .fg{flex:1}
+.ck-order h3{font-size:.88rem;margin:0 0 10px}
+.ck-order-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center}
+.ck-order-item img{width:50px;height:50px;object-fit:cover;border-radius:8px}
+.ck-order-item div{flex:1}
+.ck-order-item h4{font-size:.78rem;margin-bottom:2px}
+.ck-order-item p{font-size:.65rem;color:var(--text-m);margin:0}
+.ck-order-item span{font-family:var(--fh);font-weight:700;font-size:.82rem}
+.pay-btn{width:100%;padding:12px;background:var(--gold);color:#fff;font-family:var(--fh);font-size:.85rem;font-weight:700;border-radius:8px;margin-top:14px;transition:all var(--ease);cursor:pointer;border:none}
+.pay-btn:hover{background:var(--gold-dk);box-shadow:var(--s-gold)}
+.pay-methods{display:flex;gap:6px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.pay-methods span{font-size:.6rem;color:var(--text-m);background:#fff;padding:3px 8px;border-radius:4px;border:1px solid var(--border)}
+@media(max-width:768px){.ck-wrap{flex-direction:column}.ck-order{width:100%;position:static}}
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr">
+<div class="container hdr-in">
+<a href="index.html" class="logo"><svg viewBox="0 0 30 30" width="28" height="28"><circle cx="15" cy="6" r="3.8" fill="#C89B3C"/><circle cx="8" cy="14" r="3.2" fill="#C89B3C"/><circle cx="22" cy="14" r="3.2" fill="#C89B3C"/><ellipse cx="15" cy="21" rx="7.5" ry="6" fill="#C89B3C"/></svg><span class="lt">PUP<span>HUB</span></span></a>
+<nav class="mn"><a href="index.html">Home</a><a href="about.html">About</a><a href="store.html">Shop</a><a href="contact.html">Contact</a></nav>
+<div class="hdr-r"><a href="cart.html" class="si-btn">🛒 CART</a><button class="mob-t" id="mobToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div>
+</div>
+</header>
+
+<section style="padding:74px 0 30px;background:#fff">
+<div class="container" style="max-width:900px">
+<div style="font-size:.65rem;color:var(--text-m);margin-bottom:10px"><a href="index.html" style="color:var(--gold);font-weight:600">Home</a> / <a href="cart.html" style="color:var(--gold);font-weight:600">Cart</a> / <span>Checkout</span></div>
+
+<div class="ck-wrap">
+<!-- Billing Form -->
+<div class="ck-form">
+<h2>Billing Details</h2>
+<form id="checkoutForm" onsubmit="placeOrder(event)">
+<div class="fg-row">
+<div class="fg"><label>First Name *</label><input type="text" required placeholder="John"></div>
+<div class="fg"><label>Last Name *</label><input type="text" required placeholder="Doe"></div>
+</div>
+<div class="fg"><label>Email *</label><input type="email" required placeholder="john@email.com"></div>
+<div class="fg"><label>Phone *</label><input type="tel" required placeholder="+91 98765 43210"></div>
+
+<h3>Shipping Address</h3>
+<div class="fg"><label>Address Line 1 *</label><input type="text" required placeholder="House no, Building, Street"></div>
+<div class="fg"><label>Address Line 2</label><input type="text" placeholder="Area, Landmark"></div>
+<div class="fg-row">
+<div class="fg"><label>City *</label><input type="text" required placeholder="Mumbai"></div>
+<div class="fg"><label>State *</label>
+<select required>
+<option value="">Select State</option>
+<option>Andhra Pradesh</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Punjab</option><option>Rajasthan</option><option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option><option>West Bengal</option><option>Other</option>
+</select>
+</div>
+</div>
+<div class="fg-row">
+<div class="fg"><label>PIN Code *</label><input type="text" required placeholder="400001" pattern="[0-9]{6}" maxlength="6"></div>
+<div class="fg"><label>Country</label><input type="text" value="India" readonly style="background:var(--cream2)"></div>
+</div>
+<div class="fg"><label>Order Notes (optional)</label><textarea placeholder="Any special instructions..."></textarea></div>
+</form>
+</div>
+
+<!-- Order Summary -->
+<div class="ck-order">
+<h3>Order Summary</h3>
+<div class="ck-order-item">
+<img src="images/harness-green.jpg" alt="Harness">
+<div>
+<h4>No-Pull Comfort Harness</h4>
+<p>Volt Green · M · ×1</p>
+</div>
+<span>₹1,499</span>
+</div>
+
+<div style="margin-top:12px">
+<div class="cart-row"><span>Subtotal</span><span>₹1,499</span></div>
+<div class="cart-row"><span>Shipping</span><span style="color:var(--green);font-weight:600">FREE</span></div>
+<div class="cart-row"><span>Discount</span><span style="color:var(--green)">-₹1,000</span></div>
+<div class="cart-row total"><span>Total</span><span>₹1,499</span></div>
+</div>
+
+<button type="submit" class="pay-btn" onclick="placeOrder(event)">PAY ₹1,499</button>
+<div class="pay-methods">
+<span>UPI</span><span>Cards</span><span>Net Banking</span><span>COD</span><span>Razorpay</span>
+</div>
+<p style="font-size:.6rem;color:var(--text-m);text-align:center;margin-top:8px">🔒 100% Secure Payment</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="ft">
+<div class="container">
+<div class="ft-g">
+<div class="ft-brand"><a href="index.html" class="logo"><svg viewBox="0 0 30 30" width="26" height="26"><circle cx="15" cy="6" r="3.8" fill="#C89B3C"/><circle cx="8" cy="14" r="3.2" fill="#C89B3C"/><circle cx="22" cy="14" r="3.2" fill="#C89B3C"/><ellipse cx="15" cy="21" rx="7.5" ry="6" fill="#C89B3C"/></svg><span class="lt" style="color:#fff">PUP<span>HUB</span></span></a><p>No-Pull Comfort Dog Harness.</p></div>
+<div class="ft-col"><h4>Product</h4><ul><li><a href="store.html">Harness</a></li><li><a href="index.html#sizing">Size Guide</a></li></ul></div>
+<div class="ft-col"><h4>Policies</h4><ul><li><a href="shipping.html">Shipping</a></li><li><a href="returns.html">Returns</a></li><li><a href="cancellation.html">Cancellation</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
+<div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+</div>
+<div class="ft-bot"><p>&copy; 2026 PupHub India.</p><p>Razorpay &bull; UPI &bull; Cards &bull; COD</p></div>
+</div>
+</footer>
+
+<div class="toast-box" id="toastBox"></div>
+<script src="js/main.js"></script>
+<script>
+function placeOrder(e){e.preventDefault();if(typeof toast==='function')toast('Order placed! Redirecting to Razorpay...');else alert('Order placed! Redirecting to payment...')}
+</script>
+</body>
+</html>

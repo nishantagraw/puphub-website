@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Your Cart — PupHub</title>
+<meta name="description" content="Review your PupHub cart and checkout securely via Razorpay.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="hdr" id="hdr">
+<div class="container hdr-in">
+<a href="index.html" class="logo"><svg viewBox="0 0 30 30" width="28" height="28"><circle cx="15" cy="6" r="3.8" fill="#C89B3C"/><circle cx="8" cy="14" r="3.2" fill="#C89B3C"/><circle cx="22" cy="14" r="3.2" fill="#C89B3C"/><ellipse cx="15" cy="21" rx="7.5" ry="6" fill="#C89B3C"/></svg><span class="lt">PUP<span>HUB</span></span></a>
+<nav class="mn"><a href="index.html">Home</a><a href="about.html">About</a><a href="store.html">Shop</a><a href="contact.html">Contact</a></nav>
+<div class="hdr-r"><a href="cart.html" class="si-btn active">🛒 CART</a><a href="store.html" class="rg-btn">SHOP NOW</a><button class="mob-t" id="mobToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div>
+</div>
+</header>
+
+<section style="padding:74px 0 30px;background:#fff">
+<div class="container" style="max-width:700px">
+<div style="font-size:.65rem;color:var(--text-m);margin-bottom:10px"><a href="index.html" style="color:var(--gold);font-weight:600">Home</a> / <span>Cart</span></div>
+<h2 style="font-size:1.2rem;margin-bottom:14px">Your Cart</h2>
+
+<div id="cartItems">
+<div class="cart-item">
+<div class="cart-item-img"><img src="images/harness-green.jpg" alt="Volt Green"></div>
+<div class="cart-item-info">
+<h3>No-Pull Comfort Harness</h3>
+<p>Volt Green &bull; Size M</p>
+<div class="cart-qty">
+<button onclick="updQty(-1)">−</button>
+<span id="qty">1</span>
+<button onclick="updQty(1)">+</button>
+</div>
+<div class="cart-remove" onclick="removeItem()">Remove</div>
+</div>
+<div class="cart-item-price" id="itemPrice">₹1,499</div>
+</div>
+</div>
+
+<div class="cart-summary" id="cartSummary">
+<div class="cart-row"><span>Subtotal</span><span id="sub">₹1,499</span></div>
+<div class="cart-row"><span>Shipping</span><span style="color:var(--green);font-weight:600">FREE</span></div>
+<div class="cart-row total"><span>Total</span><span id="tot">₹1,499</span></div>
+<a href="checkout.html" class="cart-checkout" style="display:block;text-align:center;text-decoration:none">PROCEED TO CHECKOUT</a>
+<p style="text-align:center;font-size:.65rem;color:var(--text-m);margin-top:8px">Razorpay · UPI · Cards · Net Banking · COD</p>
+</div>
+
+<div class="cart-empty" id="emptyCart" style="display:none">
+<svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+<h3 style="margin-bottom:6px">Your cart is empty</h3>
+<p style="font-size:.82rem">Looks like you haven't added anything yet.</p>
+<a href="store.html" class="exp-btn" style="margin-top:10px">Browse Harness <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</div>
+</div>
+</section>
+
+<footer class="ft">
+<div class="container">
+<div class="ft-g">
+<div class="ft-brand"><a href="index.html" class="logo"><svg viewBox="0 0 30 30" width="26" height="26"><circle cx="15" cy="6" r="3.8" fill="#C89B3C"/><circle cx="8" cy="14" r="3.2" fill="#C89B3C"/><circle cx="22" cy="14" r="3.2" fill="#C89B3C"/><ellipse cx="15" cy="21" rx="7.5" ry="6" fill="#C89B3C"/></svg><span class="lt" style="color:#fff">PUP<span>HUB</span></span></a><p>No-Pull Comfort Dog Harness.</p></div>
+<div class="ft-col"><h4>Product</h4><ul><li><a href="store.html">Harness</a></li><li><a href="index.html#sizing">Size Guide</a></li></ul></div>
+<div class="ft-col"><h4>Policies</h4><ul><li><a href="shipping.html">Shipping</a></li><li><a href="returns.html">Returns</a></li><li><a href="cancellation.html">Cancellation</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
+<div class="ft-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+</div>
+<div class="ft-bot"><p>&copy; 2026 PupHub India.</p><p>Razorpay &bull; UPI &bull; Cards &bull; COD</p></div>
+</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+let qty=1;const price=1499;
+function updQty(d){qty=Math.max(1,qty+d);document.getElementById('qty').textContent=qty;const t='₹'+(price*qty).toLocaleString('en-IN');document.getElementById('itemPrice').textContent=t;document.getElementById('sub').textContent=t;document.getElementById('tot').textContent=t}
+function removeItem(){document.getElementById('cartItems').style.display='none';document.getElementById('cartSummary').style.display='none';document.getElementById('emptyCart').style.display='block'}
+</script>
+</body>
+</html>
